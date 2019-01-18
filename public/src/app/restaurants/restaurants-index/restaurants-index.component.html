@@ -1,0 +1,28 @@
+<h3>Restaurant List</h3>
+<button class='button' (click)="showCreate()">New Restaurant</button>
+<table>
+  <tr>
+    <th>Restaurant Name</th>
+    <th>Cuisine</th>
+    <th>Actions Available</th>
+  </tr>
+  <tr *ngFor='let restaurant of restaurants'>
+    <td>{{restaurant.name}}</td>
+    <td>{{restaurant.cuisine}}</td>
+    <td>
+      <button class='button1' [routerLink]="['/restaurants', restaurant._id]">Read Reviews</button> 
+      <button class='button2' [routerLink]="['/restaurants/reviews', restaurant._id]">New Review</button>
+      <button class='button3' (click)="showEdit(restaurant)">Edit</button>
+    </td>
+  </tr>
+</table>
+
+<p *ngIf = "show_bool == true">Cannot be blank</p>
+<h1 *ngIf="should_open2">Edit Form</h1>
+<form *ngIf="should_open2" (submit) = "onEdit()">
+  Restaurant Name: <input type = "text" name ="edittedTask.name" [(ngModel)] = "edittedTask.name"/>
+  Cuisine: <input type = "text" name ="edittedTask.cuisine" [(ngModel)] = "edittedTask.cuisine"/>
+  <input type="Submit" value = "Edit Restaurant"/>
+</form>
+
+<app-restaurants-new *ngIf="should_open" (cancel)="recCancel($event)" (update)="recUpdate($event)"></app-restaurants-new>

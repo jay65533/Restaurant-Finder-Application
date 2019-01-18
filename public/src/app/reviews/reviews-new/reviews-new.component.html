@@ -1,0 +1,18 @@
+<h4 class='text-primary'>Write A Review for {{restaurant.name}}</h4>
+
+<form #reviewForm = ngForm  (submit) = "onCommentSubmit(restaurant._id, reviewForm)">
+    Your name: <input type = "text" name = "name" ngModel/><br>
+    Stars: <select class = "select" name = "rating" ngModel>
+      <option selected = "selected" value = "5">5</option>
+      <option value = "4">4</option>
+      <option value = "3">3</option>
+      <option value = "2">2</option>
+      <option value = "1">1</option>
+    </select><br>
+    Your review: <input type = "text" name = "comment" ngModel/>
+
+
+  <button class='btn btn-success' type='submit'>Submit</button>
+  <button class='btn btn-warning' [routerLink]="['/restaurants', restaurant._id]">Cancel</button>
+</form>
+

@@ -1,0 +1,15 @@
+<h3 class='text-primary'>Reviews for {{restaurant.name}}</h3>
+<button class='btn btn-danger' (click)='deleteRestaurant(restaurant._id)'>Delete</button>
+<table>
+  <tr>
+    <th>Reviewer</th>
+    <th>Stars</th>
+    <th>Review</th>
+  </tr>
+  <tr *ngFor='let review of restaurant.review | orderBy: rating'>
+    <td>{{review.name}}</td>
+    <td>{{review.rating}}</td>
+    <td>{{review.comment}}</td>
+  </tr>
+
+</table>
